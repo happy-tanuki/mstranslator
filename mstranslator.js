@@ -118,7 +118,7 @@ MsTranslator.prototype.call = function(path, params, fn) {
   settings.headers.Authorization = 'Bearer ' + this.access_token;
   params = this.convertArrays(params);
   settings.path= this.ajax_root + path + '?' + querystring.stringify(params);
-  var req = http.request(settings, function(res) {
+  var req = https.request(settings, function(res) {
     res.setEncoding('utf8');
     var body = '';
     res.on('data', function (chunk) {
@@ -154,7 +154,7 @@ MsTranslator.prototype.call_speak = function(path, params, fn) {
   settings.headers.Authorization = 'Bearer ' + this.access_token;
   params = this.convertArrays(params);
   settings.path= this.http_root + path + '?' + querystring.stringify(params);
-  var req = http.request(settings, function(res) {
+  var req = https.request(settings, function(res) {
     var buffers = [];
 
     res.on('data', function (chunk) {
